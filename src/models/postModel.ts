@@ -31,6 +31,7 @@ const postSchema = new Schema<Post>({
         type: Number,
         default: 0
     },
+    tags: [String],
     comments: [],
 
 });

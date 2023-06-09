@@ -1,3 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&family=Work+Sans:wght@400;500;600;700;800;900&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+header,
+main,
+footer{
+    @apply bg-[#F9F9F9] dark:bg-[#181818] px-12
+}
+
+main{
+    @apply mb-16 rounded-2xl
+}
+
+
+

@@ -3,6 +3,8 @@ import './globals.css'
 import { Inter } from 'next/font/google'
 import { Session } from 'next-auth'
 
+import Header from '@/components/layouts/Header'
+
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
@@ -18,9 +20,12 @@ export default function RootLayout({
   session: Session
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className='dark'>
       <Provider session={session}>
-        <body className={inter.className}>{children}</body>
+        <body className="container mx-auto bg-[#EFEFEF] dark:bg-[#0e0e0e]">
+          <Header />
+          {children}
+        </body>
       </Provider>
     </html>
   )
