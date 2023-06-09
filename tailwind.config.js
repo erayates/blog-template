@@ -16,6 +16,9 @@ module.exports = {
         primary: 'Work Sans, sans-serif',
         secondary: 'Merriweather , sans-serif',
       },
+      backgroundColor:{
+        dark: '#121212',
+      }
       
     },
   },

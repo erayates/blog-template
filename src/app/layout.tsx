@@ -4,8 +4,7 @@ import { Inter } from 'next/font/google'
 import { Session } from 'next-auth'
 
 import Header from '@/components/layouts/Header'
-
-const inter = Inter({ subsets: ['latin'] })
+import Sidebar from '@/components/layouts/Sidebar'
 
 export const metadata = {
   title: 'erayates.dev | Dev Blog',
@@ -20,10 +19,11 @@ export default function RootLayout({
   session: Session
 }) {
   return (
-    <html lang="en" className='dark'>
+    <html lang="en">
       <Provider session={session}>
-        <body className="container mx-auto bg-[#EFEFEF] dark:bg-[#0e0e0e]">
+        <body className="mx-8 lg:container lg:mx-auto bg-[#EFEFEF] dark:bg-[#0e0e0e] grid grid-cols-12">
           <Header />
+          <Sidebar />
           {children}
         </body>
       </Provider>

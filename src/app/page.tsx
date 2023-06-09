@@ -2,7 +2,7 @@ import Image from 'next/image'
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col justify-between mx-auto">
+    <main className="col-span-9">
       Main Page
     </main>
   )
