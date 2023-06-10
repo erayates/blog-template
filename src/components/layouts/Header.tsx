@@ -11,7 +11,7 @@ export default function Header() {
     const { data: session, status } = useSession();
 
     return (
-        <header className="py-6 flex items-center justify-between my-16 rounded-2xl col-span-12">
+        <header className="py-6 flex items-center justify-between my-8 rounded-2xl col-span-12">
             <div className="site-logo dark:text-white w-1/3">
                 <h1 className="site-title text-[42px] font-primary leading-10">erayates.dev</h1>
                 <span className="site-subtitle text-[20px] font-secondary">DEV BLOG</span>

@@ -16,8 +16,6 @@ export default function Login() {
     if (session) router.push('/');
 
     useEffect(() => {
-
-
         const setUpProviders = async () => {
             const response: any = await getProviders();
             setProviders(response);
@@ -26,7 +24,6 @@ export default function Login() {
         setUpProviders();
     }, [])
 
-    console.log(providers)
 
     return (
         <main className="flex justify-center items-center flex-col py-20 col-span-9">

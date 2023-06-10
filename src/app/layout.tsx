@@ -1,6 +1,5 @@
 import Provider from '@/components/Provider'
 import './globals.css'
-import { Inter } from 'next/font/google'
 import { Session } from 'next-auth'
 
 import Header from '@/components/layouts/Header'
