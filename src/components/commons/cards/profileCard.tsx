@@ -5,7 +5,7 @@ export default function ProfileCard() {
     return (
         <div className=" bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray- w-full lg:w-1/2 mr-12 mb-12 lg:mb-0">
             <div className="flex flex-col items-center py-10">
-                <img className="w-24 h-24 mb-3 rounded-full shadow-lg" src="/docs/images/people/profile-picture-3.jpg" alt="Bonnie image" />
+                <img className="w-24 h-24 mb-3 rounded-full shadow-lg" src="https://i.pravatar.cc/300" alt="Bonnie image" />
                 <h5 className="mb-1 text-xl font-medium text-gray-900 dark:text-white font-primary">Eray Ates</h5>
                 <span className="text-sm text-gray-500 dark:text-gray-400 font-primary">Web Developer</span>
                 <div className="flex mt-4 space-x-3 md:mt-6">

@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 
-import { signIn, signOut, useSession, getProviders } from 'next-auth/react'
+import { signIn, useSession, getProviders } from 'next-auth/react'
 
 import { AiFillGithub, AiOutlineGoogle } from 'react-icons/ai'
 import { useRouter } from 'next/navigation';
