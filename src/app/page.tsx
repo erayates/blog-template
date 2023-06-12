@@ -26,6 +26,9 @@ export default function Home() {
             <PostCard />
             <PostCard />
             <PostCard />
+            <PostCard />
+            <PostCard />
+            
           </div>
         </section>
 
@@ -41,6 +44,8 @@ export default function Home() {
           <PostCard />
           <PostCard />
           <PostCard />
+          <PostCard />
+          <PostCard />
         </div>
       </section>
 
@@ -49,6 +54,8 @@ export default function Home() {
         <p className="text-sm text-black/50">Most liked blog posts</p>
         <hr className="mt-2"></hr>
         <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8 mt-6">
+          <PostCard />
+          <PostCard />
           <PostCard />
           <PostCard />
           <PostCard />

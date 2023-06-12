@@ -13,9 +13,10 @@ export default function Login() {
 
     const [providers, setProviders] = useState(null);
     
-    if (session) router.push('/');
 
     useEffect(() => {
+        if (session) router.push('/');
+
         const setUpProviders = async () => {
             const response: any = await getProviders();
             setProviders(response);
@@ -24,6 +25,9 @@ export default function Login() {
         setUpProviders();
     }, [])
 
+    useEffect(() => {
+        if (session) router.push('/');
+    },[session])
 
     return (
         <main className="flex justify-center items-center flex-col py-20 col-span-9">

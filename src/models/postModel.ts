@@ -8,6 +8,7 @@ interface Post extends Document {
     likes: number;
     comments: string[];
     tags: string[];
+    category: string;
     createdAt: Date;
     updatedAt: Date;
 }
@@ -31,6 +32,7 @@ const postSchema = new Schema<Post>({
         type: Number,
         default: 0
     },
+    category: String,
     tags: [String],
     comments: [],
 
