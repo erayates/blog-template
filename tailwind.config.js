@@ -14,7 +14,7 @@ module.exports = {
       },
       fontFamily: {
         primary: 'Work Sans, sans-serif',
-        secondary: 'Merriweather , sans-serif',
+        secondary: 'Inter , sans-serif',
       },
       backgroundColor:{
         dark: '#121212',

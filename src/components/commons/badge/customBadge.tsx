@@ -2,7 +2,7 @@
 
 interface CustomBadgeProps {
     color: string;
-    text: string;
+    text: string | null | undefined;
 }
 
 export default function CustomBadge({color, text}: CustomBadgeProps): JSX.Element{

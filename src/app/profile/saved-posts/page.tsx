@@ -1,16 +1,15 @@
 import CustomBadge from '@/components/commons/badge/customBadge'
 import React from 'react'
 import Link from 'next/link'
-import PostCardButtons from '@/components/commons/buttons/PostCardButtons'
 import PostCard from '@/components/commons/cards/PostCard'
 
 export default function page() {
   return (
     <main className='col-span-9 pt-12 font-primary'>
       <section className='user-liked-posts-header'>
-        <h2 className='text-2xl font-semibold  text-gray-800 dark:text-white font-primary'>Your Liked Posts</h2>
-        <span className='text-gray-500 text-sm'>Total Liked: </span>
-        <CustomBadge color='blue' text='56' />
+        <h2 className='text-2xl font-semibold  text-gray-800 dark:text-white font-primary'>Your Saved Posts</h2>
+        <span className='text-gray-500 text-sm'>Total Saved: </span>
+        <CustomBadge color='blue' text='98' />
         <hr className='my-5'></hr>
       </section>
       <section className='user-likeds-posts-body ' >
