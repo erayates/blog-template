@@ -3,7 +3,10 @@ import './globals.css'
 import { Session } from 'next-auth'
 
 import Header from '@/components/layouts/Header'
-import Sidebar from '@/components/layouts/Sidebar'
+import Sidebar from '@/components/layouts/Sidebar/Sidebar'
+
+import {CgMenuGridR}  from 'react-icons/cg'
+import MobileSidebar from '@/components/layouts/Sidebar/MobileSidebar'
 
 export const metadata = {
   title: 'erayates.dev | Dev Blog',
@@ -22,6 +25,7 @@ export default function RootLayout({
       <Provider session={session}>
         <body className="mx-8 lg:container lg:mx-auto bg-[#EFEFEF] dark:bg-[#0e0e0e] grid grid-cols-12">
           <Header />
+          <MobileSidebar />
           <Sidebar />
           {children}
         </body>

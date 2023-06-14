@@ -8,12 +8,13 @@
 header,
 main,
 footer{
-    @apply bg-[#F9F9F9] dark:bg-[#181818] px-12
+    @apply bg-[#F9F9F9] dark:bg-[#181818] px-6 lg:px-12
 }
 
 main{
-    @apply ml-8 rounded-2xl 
+    @apply lg:ml-8 col-span-12 lg:col-span-9 rounded-2xl 
 }
+
 
 
 

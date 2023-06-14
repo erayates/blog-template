@@ -21,7 +21,7 @@ export default function SwitchTheme() {
   }, [])
 
   return (
-    <button className='switch-theme text-[20px] mx-8 py-2 px-8 hover:scale-105 text-white transition bg-dark dark:bg-white dark:text-[#121212] rounded-2xl' onClick={() => handleSwitchTheme()}>
+    <button className='switch-theme text-[20px]  py-2 px-8 hover:scale-105 text-white transition bg-dark dark:bg-white dark:text-[#121212] rounded-2xl' onClick={() => handleSwitchTheme()}>
       {theme === 'dark' ? <BsFillSunFill /> : <BsFillMoonStarsFill />}
     </button>
   );

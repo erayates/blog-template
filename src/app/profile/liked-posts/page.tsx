@@ -1,7 +1,6 @@
 import CustomBadge from '@/components/commons/badge/customBadge'
 import React from 'react'
 import Link from 'next/link'
-import PostCardButtons from '@/components/commons/buttons/PostCardButtons'
 import PostCard from '@/components/commons/cards/PostCard'
 
 export default function page() {
