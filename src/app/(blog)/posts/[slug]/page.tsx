@@ -11,7 +11,7 @@ import PostHeader from "@/components/post/PostHeader"
 
 export default function Details() {
     return (
-        <main className="col-span-9 pt-12">
+        <main className="">
             <section className="post-content max-w-4xl mx-auto">
                 <Breadcrumb />
                 <PostHeader />

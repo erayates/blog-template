@@ -5,7 +5,7 @@ import { Session } from 'next-auth'
 import Header from '@/components/layouts/Header'
 import Sidebar from '@/components/layouts/Sidebar/Sidebar'
 
-import {CgMenuGridR}  from 'react-icons/cg'
+import { CgMenuGridR } from 'react-icons/cg'
 import MobileSidebar from '@/components/layouts/Sidebar/MobileSidebar'
 
 export const metadata = {
@@ -27,7 +27,7 @@ export default function RootLayout({
           <Header />
           <MobileSidebar />
           <Sidebar />
-          {children}
+            {children}
         </body>
       </Provider>
     </html>

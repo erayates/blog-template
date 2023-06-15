@@ -12,7 +12,7 @@ export default function PostCard() {
 
                 <Link href="#" className="block mt-2">
                     <p className="text-xl font-semibold text-gray-900 dark:text-white font-primary">Boost your conversion rate</p>
-                    <p className="mt-3 text-base text-gray-500 dark:text-gray-400">
+                    <p className="mt-3 text-gray-500 dark:text-gray-400 font-secondary font-light text-sm">
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto accusantium praesentium eius, ut atque fuga culpa, similique sequi cum eos quis dolorum.
                     </p>
                 </Link>

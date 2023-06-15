@@ -1,4 +1,3 @@
-'use client';
 
 import CodeCard from "@/components/commons/cards/CodeCard";
 import NewsletterCard from "@/components/commons/cards/NewsletterCard";

@@ -1,4 +1,5 @@
 import { Schema, models, model, Document } from "mongoose";
+import slugify from "slugify";
 
 interface Post extends Document {
     title: string;
@@ -10,6 +11,7 @@ interface Post extends Document {
     tags: string[];
     category: string;
     createdAt: Date;
+    slug: string;
     updatedAt: Date;
 }
 
@@ -34,9 +36,15 @@ const postSchema = new Schema<Post>({
     },
     category: String,
     tags: [String],
+    slug: String,
     comments: [],
 
 });
+
+postSchema.pre<Post>('save', function(next){
+    this.slug = slugify(this.title, {lower: true});
+    next();
+})
 
 const Post = models.Post || model<Post>('Post', postSchema);
 

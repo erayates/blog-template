@@ -2,60 +2,61 @@ import { IoLogoJavascript, IoLogoHtml5, IoLogoCss3, IoLogoNodejs } from 'react-i
 import { SiNextdotjs, SiReact } from 'react-icons/si'
 import { GrPersonalComputer } from 'react-icons/gr'
 import { MdEngineering } from 'react-icons/md'
+import Link from 'next/link'
 
 export default function SidebarElements() {
     return (
         <>
-            <h3 className="text-2xl font-medium my-3 lg:text-left text-center pl-2">Blog Topics</h3>
-            
-            <ul className="space-y-2 font-medium flex flex-col lg:block items-center">
+            <h3 className="sidebar-menu-title">Blog Topics</h3>
+
+            <ul className="sidebar-menu-list">
                 <li>
-                    <a href="#" className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+                    <Link href="#" className="sidebar-menu-item">
                         <IoLogoHtml5 />
-                        <span className="flex-1 ml-3 whitespace-nowrap">HTML 5</span>
-                    </a>
+                        <span className="sidebar-menu-item-text">HTML 5</span>
+                    </Link>
                 </li>
                 <li>
-                    <a href="#" className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+                    <Link href="#" className="sidebar-menu-item">
                         <IoLogoCss3 />
-                        <span className="flex-1 ml-3 whitespace-nowrap">CSS</span>
-                    </a>
+                        <span className="sidebar-menu-item-text">CSS</span>
+                    </Link>
                 </li>
                 <li>
-                    <a href="#" className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+                    <Link href="#" className="sidebar-menu-item">
                         <IoLogoJavascript />
-                        <span className="flex-1 ml-3 whitespace-nowrap">Javascript</span>
-                    </a>
+                        <span className="sidebar-menu-item-text">Javascript</span>
+                    </Link>
                 </li>
                 <li>
-                    <a href="#" className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+                    <Link href="#" className="sidebar-menu-item">
                         <SiReact />
-                        <span className="flex-1 ml-3 whitespace-nowrap">React</span>
-                    </a>
+                        <span className="sidebar-menu-item-text">React</span>
+                    </Link>
                 </li>
                 <li>
-                    <a href="#" className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+                    <Link href="#" className="sidebar-menu-item">
                         <SiNextdotjs />
-                        <span className="flex-1 ml-3 whitespace-nowrap">Next.js</span>
-                    </a>
+                        <span className="sidebar-menu-item-text">Next.js</span>
+                    </Link>
                 </li>
                 <li>
-                    <a href="#" className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+                    <Link href="#" className="sidebar-menu-item">
                         <IoLogoNodejs />
-                        <span className="flex-1 ml-3 whitespace-nowrap">Node.js</span>
-                    </a>
+                        <span className="sidebar-menu-item-text">Node.js</span>
+                    </Link>
                 </li>
                 <li>
-                    <a href="#" className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+                    <Link href="#" className="sidebar-menu-item">
                         <GrPersonalComputer />
-                        <span className="flex-1 ml-3 break-normal">Computer Science</span>
-                    </a>
+                        <span className="sidebar-menu-item-text">Computer Science</span>
+                    </Link>
                 </li>
                 <li>
-                    <a href="#" className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+                    <Link href="#" className="sidebar-menu-item">
                         <MdEngineering />
-                        <span className="flex-1 ml-3 break-normal">Software Engineering</span>
-                    </a>
+                        <span className="sidebar-menu-item-text">Software Engineering</span>
+                    </Link>
                 </li>
             </ul>
         </>
