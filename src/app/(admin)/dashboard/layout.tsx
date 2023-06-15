@@ -1,7 +1,9 @@
+import Sidebar from '@/components/layouts/Admin/Sidebar'
 import './globals.css'
+import Header from '@/components/layouts/Admin/Header'
+
 export const metadata = {
-    title: 'asd',
-    description: 'A blog about web development and programming.',
+    title: 'erayates.dev | Admin Dashboard',
 }
 
 
@@ -12,6 +14,8 @@ export default function DashboardLayout({
 }) {
     return (
         <>
+            <Header />
+            <Sidebar />
             {children}
         </>
     )

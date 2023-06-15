@@ -1,0 +1,3 @@
+#layouts-button:focus-within + #dropdown-layouts{
+    @apply block
+}
