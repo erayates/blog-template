@@ -1,6 +1,6 @@
-import Sidebar from '@/components/layouts/Admin/Sidebar'
+import Sidebar from '@/components/dashboard/layouts/Sidebar'
 import './globals.css'
-import Header from '@/components/layouts/Admin/Header'
+import Header from '@/components/dashboard/layouts/Header'
 
 export const metadata = {
     title: 'erayates.dev | Admin Dashboard',

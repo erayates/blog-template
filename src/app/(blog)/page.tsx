@@ -7,7 +7,6 @@ import ProfileCard from "@/components/commons/cards/ProfileCard";
 import { useSession } from "next-auth/react";
 
 export default function Home() {
-  const { data: session } = useSession();
 
   return (
     <main className="pt-12">
@@ -24,7 +23,7 @@ export default function Home() {
         <ProfileCard />
         <CodeCard />
       </section>
-      {session && (
+      {/* {session && (
         <section className="save-list-posts mt-12">
           <h2 className="text-2xl font-semibold  text-gray-800 dark:text-white font-primary">Your Saved Posts</h2>
           <p className="text-sm text-black/50">Some of your saved posts</p>
@@ -40,7 +39,7 @@ export default function Home() {
           </div>
         </section>
 
-      )}
+      )} */}
 
 
       <section className="recent-posts mt-12">
