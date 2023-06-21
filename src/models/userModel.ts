@@ -9,6 +9,8 @@ interface User extends Document {
     likedPosts?: Schema.Types.ObjectId[];
     savedPosts?: Schema.Types.ObjectId[];
     image: string;
+    createdAt: Date;
+    updatedAt: Date;
 }
 
 const userSchema = new Schema<User>({
@@ -28,6 +30,19 @@ const userSchema = new Schema<User>({
         enum: ['user', 'editor', 'administrator'],
         default: 'user'
     },
+    createdAt: {
+        type: Date,
+        default: Date.now
+    },
+    likedPosts: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Post'
+    }],
+    savedPosts: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Post'
+    }],
+    updatedAt: Date,
     image: String,
 
 })

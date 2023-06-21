@@ -37,6 +37,7 @@ const handler = NextAuth({
                 
                 const userExists = await User.findOne({ email: profile.email });
                 if (!userExists) {
+                    
                     // Create user if not exists and provider is github
                     await User.create({
                         email: profile.email,

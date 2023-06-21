@@ -1,5 +1,6 @@
 import { Schema, models, model, Document } from "mongoose";
 import slugify from "slugify";
+import dayjs from "dayjs";
 
 interface Post extends Document {
     title: string;
@@ -28,6 +29,10 @@ const postSchema = new Schema<Post>({
     author:{
         type: String,
         required: [true, 'Author is required.'],
+    },
+    createdAt: {
+        type: Date,
+        default: Date.now
     },
     image: String,
     likes: {

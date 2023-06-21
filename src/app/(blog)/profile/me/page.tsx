@@ -3,6 +3,7 @@ import CustomBadge from "@/components/commons/badge/customBadge";
 import PostCard from "@/components/commons/cards/PostCard";
 import UserProfileCommentCard from "@/components/commons/cards/UserProfileCommentCard";
 import { useSession } from "next-auth/react"
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { AiFillLike, AiFillMail, AiOutlineComment } from "react-icons/ai";
 import { BsWrench, BsFillBookmarkPlusFill } from "react-icons/bs";
@@ -62,10 +63,10 @@ export default function Me() {
                     <PostCard />
                     <PostCard />
                 </div>
-                <p className="flex justify-end items-center text-sm font-medium text-blue-600 dark:text-blue-400 hover:underline my-5 cursor-pointer">
+                <Link href={'/profile/saved-posts'} className="flex justify-end items-center text-sm font-medium text-blue-600 dark:text-blue-400 hover:underline my-5 cursor-pointer">
                     <AiOutlineComment className="mr-2" />
                     View All Saved Posts
-                </p>
+                </Link>
             </div>
 
             <div className="user-liked-posts mt-10">

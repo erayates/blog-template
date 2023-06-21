@@ -4,6 +4,7 @@ interface Comment extends Document {
     author: Schema.Types.ObjectId;
     content: string;
     createdAt: Date;
+    updatedAt: Date;
     replies: Comment[];
 }
 
@@ -22,6 +23,7 @@ const commentSchema = new Schema<Comment>({
         type: Date,
         default: Date.now 
     },
+    updatedAt: Date,
     replies: [{ type: Schema.Types.ObjectId, ref: 'Comment' }],
 });
 

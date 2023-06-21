@@ -1,18 +1,15 @@
 'use client';
 
 import UserProfileCommentCard from "@/components/commons/cards/UserProfileCommentCard";
-import Breadcrumb from "@/components/layouts/Breadcrumb";
+import PageHeader from "@/components/dashboard/pages/PageHeader";
+import Link from "next/link";
 import { AiOutlineComment, AiOutlineUser } from "react-icons/ai";
 import { TbWritingSign } from 'react-icons/tb';
 
 export default function page() {
     return (
         <main className="ml-64 top-4 p-16 relative z-50 grid grid-cols-2 gap-16">
-            <section className="col-span-2">
-                <Breadcrumb />
-                <h1 className="text-[48px] font-primary font-semibold">Dashboard</h1>
-
-            </section>
+            <PageHeader title="Dashboard" subtitle="Manage your website"/>
             <section className="total-info font-primary">
                 <h2 className="text-2xl font-semibold  text-gray-800 dark:text-white font-primary">
                     General
@@ -188,6 +185,10 @@ export default function page() {
                     </div>
                 </div>
 
+                <Link href={'/dashboard/users'} className="flex justify-end items-center text-sm font-medium text-blue-600 dark:text-blue-400 hover:underline my-5 cursor-pointer">
+                    <AiOutlineComment className="mr-2" />
+                    View All Users
+                </Link>
             </section>
             <section className="recently-users grid-span-6">
                 <h2 className="text-2xl font-semibold  text-gray-800 dark:text-white font-primary">
@@ -249,9 +250,12 @@ export default function page() {
                         </div>
                     </div>
                 </div>
-
+                <Link href={'/dashboard/posts'} className="flex justify-end items-center text-sm font-medium text-blue-600 dark:text-blue-400 hover:underline my-5 cursor-pointer">
+                    <AiOutlineComment className="mr-2" />
+                    View All Posts
+                </Link>
             </section>
-            <section className="recently-users grid-span-6">
+            <section className="recently-users grid-span-6 flex flex-col justify-between">
                 <h2 className="text-2xl font-semibold  text-gray-800 dark:text-white font-primary">
                     Recently Comments
                 </h2>
@@ -260,6 +264,10 @@ export default function page() {
                 <UserProfileCommentCard />
                 <UserProfileCommentCard />
                 <UserProfileCommentCard />
+                <Link href={'/dashboard/users'} className="flex justify-end items-center text-sm font-medium text-blue-600 dark:text-blue-400 hover:underline my-5 cursor-pointer">
+                    <AiOutlineComment className="mr-2" />
+                    View All Comments
+                </Link>
             </section>
         </main>
     )
