@@ -5,8 +5,10 @@ import { Session } from 'next-auth'
 import Header from '@/components/layouts/Header'
 import Sidebar from '@/components/layouts/Sidebar/Sidebar'
 
-import { CgMenuGridR } from 'react-icons/cg'
 import MobileSidebar from '@/components/layouts/Sidebar/MobileSidebar'
+import SearchBar from '@/components/layouts/SearchBar'
+
+
 
 export const metadata = {
   title: 'erayates.dev | Dev Blog',
@@ -23,12 +25,17 @@ export default function RootLayout({
   return (
     <html lang="en">
       <Provider session={session}>
-        <body className="mx-8 lg:container lg:mx-auto bg-[#EFEFEF] dark:bg-[#0e0e0e] grid grid-cols-12">
-          <Header />
-          <MobileSidebar />
-          <Sidebar />
-            {children}
-        </body>
+        
+          <body className="mx-8 lg:container lg:mx-auto bg-[#EFEFEF] dark:bg-[#0e0e0e] grid grid-cols-12">
+            <Header />
+            <MobileSidebar />
+            <Sidebar />
+            <main>
+              <SearchBar />
+              {children}
+            </main>
+          </body>
+       
       </Provider>
     </html>
   )

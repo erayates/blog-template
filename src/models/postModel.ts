@@ -1,11 +1,11 @@
 import { Schema, models, model, Document } from "mongoose";
 import slugify from "slugify";
-import dayjs from "dayjs";
+import User from "./userModel";
 
 interface Post extends Document {
     title: string;
     content: string;
-    author: string;
+    author: Schema.Types.ObjectId;
     image: string;
     likes: number;
     comments: string[];
@@ -16,7 +16,7 @@ interface Post extends Document {
     updatedAt: Date;
 }
 
-const postSchema = new Schema<Post>({
+const postSchema: Schema = new Schema<Post>({
     title: {
         type: String,
         required: [true, 'Title is required.'],
@@ -27,8 +27,8 @@ const postSchema = new Schema<Post>({
         minlength: [50, 'Content must be at least 50 characters long.']
     },
     author:{
-        type: String,
-        required: [true, 'Author is required.'],
+        type: Schema.Types.ObjectId,
+        ref: 'User',
     },
     createdAt: {
         type: Date,
@@ -39,6 +39,7 @@ const postSchema = new Schema<Post>({
         type: Number,
         default: 0
     },
+ 
     category: String,
     tags: [String],
     slug: String,

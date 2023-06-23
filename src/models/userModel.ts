@@ -1,5 +1,6 @@
 import { Schema, models, model, Document } from "mongoose";
 
+
 interface User extends Document {
     username: string;
     email: string;
@@ -13,7 +14,7 @@ interface User extends Document {
     updatedAt: Date;
 }
 
-const userSchema = new Schema<User>({
+const userSchema: Schema = new Schema<User>({
     username: {
         type: String,
         required: [true, 'Username is required.'],
@@ -30,17 +31,20 @@ const userSchema = new Schema<User>({
         enum: ['user', 'editor', 'administrator'],
         default: 'user'
     },
+
     createdAt: {
         type: Date,
         default: Date.now
     },
+
     likedPosts: [{
         type: Schema.Types.ObjectId,
-        ref: 'Post'
+        ref: "Post"
     }],
+
     savedPosts: [{
         type: Schema.Types.ObjectId,
-        ref: 'Post'
+        ref: "Post"
     }],
     updatedAt: Date,
     image: String,

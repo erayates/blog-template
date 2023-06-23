@@ -3,26 +3,27 @@ import { connectToDatabase } from "@/utilities/database";
 import { NextResponse } from "next/server";
 import { ObjectId } from "mongoose";
 
-export async function GET({params}: {params: {id: string}}){
-    try{
+export async function GET(req: Request, { params }: { params: { id: string } }) {
+    try {
         await connectToDatabase();
-        const id = params.id;
-        const user = await User.findOne({_id: id}).populate('likedPosts','title');
+        const id = params.id
+        const user = await User.findOne({ _id: id }).populate('likedPosts').populate('savedPosts');
 
-        return NextResponse.json(user, {status: 200});
-    }catch(err: any){
-        return NextResponse.json(err.message, {status: 500});     
-    };
+        return new NextResponse(user, { status: 200 });
+    } catch (err: any) {
+        return new NextResponse(err.message, { status: 500 });
+    }
 }
 
-export async function PATCH(req: Request, {params}: {params: {id: string}}){
-    try{
+export async function PATCH(req: Request, { params }: { params: { id: string } }) {
+    try {
+
         await connectToDatabase();
         const id = params.id;
         const reqBody = await req.json();
-        const user = await User.findOne({_id: id});
-        
-        if(!user) throw new Error('User not found.');
+        const user = await User.findOne({ _id: id });
+
+        if (!user) throw new Error('User not found.');
 
         user.username = reqBody.username || user.username;
         user.email = reqBody.email || user.email;
@@ -36,9 +37,9 @@ export async function PATCH(req: Request, {params}: {params: {id: string}}){
         await user.save();
 
 
-        return NextResponse.json(user, {status: 200});
-    }catch(err: any){
-        return NextResponse.json(err.message, {status: 500});     
+        return NextResponse.json(user, { status: 200 });
+    } catch (err: any) {
+        return NextResponse.json(err.message, { status: 500 });
     }
 
 }

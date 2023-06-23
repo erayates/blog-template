@@ -12,7 +12,7 @@ footer{
 }
 
 main{
-    @apply lg:ml-8 col-span-12 lg:col-span-9 rounded-2xl 
+    @apply lg:ml-8 col-span-12 lg:col-span-9 rounded-2xl pt-12 font-primary
 }
 
 

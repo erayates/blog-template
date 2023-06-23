@@ -1,12 +1,10 @@
-import CommentDropdownMenu from "@/components/commons/comments/CommentCard/CommentDropdownMenu"
-import CommentHeader from "@/components/commons/comments/CommentCard/CommentHeader"
-import CommentReply from "@/components/commons/comments/CommentCard/CommentReply"
+
 import CommentInput from "@/components/commons/comments/CommentInput"
 import ReplyCommentCard from "@/components/commons/comments/ReplyCommentCard"
 import Breadcrumb from "@/components/layouts/Breadcrumb"
-import PostContent from "@/components/post/PostContent"
-import PostFooter from "@/components/post/PostFooter"
-import PostHeader from "@/components/post/PostHeader"
+import PostContent from "@/components/posts/PostContent"
+import PostFooter from "@/components/posts/PostFooter"
+import PostHeader from "@/components/posts/PostHeader"
 
 
 export default function Details() {

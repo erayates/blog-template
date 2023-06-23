@@ -5,7 +5,7 @@ import { NextResponse } from "next/server";
 export async function GET(){
     try{
         await connectToDatabase();
-        const posts = await User.find({}).populate('likedPosts','title');
+        const posts = await User.find({}).populate('likedPosts').populate('savedPosts');
 
         return NextResponse.json(posts, {status: 200});
     }catch(err: any){
