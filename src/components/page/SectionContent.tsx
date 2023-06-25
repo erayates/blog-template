@@ -7,7 +7,6 @@ import {usePosts} from "@/hooks/usePostsQuery";
 export default function SectionContent({sort}: {sort?: string}) {
     const { isLoading, error, data: posts } = usePosts(sort);
 
-    console.log(posts)
     if(isLoading){
         return <div>Loading...</div>
     }

@@ -25,7 +25,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <Provider session={session}>
-        
           <body className="mx-8 lg:container lg:mx-auto bg-[#EFEFEF] dark:bg-[#0e0e0e] grid grid-cols-12">
             <Header />
             <MobileSidebar />
@@ -35,7 +34,6 @@ export default function RootLayout({
               {children}
             </main>
           </body>
-       
       </Provider>
     </html>
   )

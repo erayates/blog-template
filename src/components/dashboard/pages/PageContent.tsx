@@ -2,10 +2,11 @@
 import EditButton from "../commons/buttons/EditButton"
 import DeleteButton from "../commons/buttons/DeleteButton"
 import { FaLongArrowAltRight, FaLongArrowAltLeft } from 'react-icons/fa'
-import CustomBadge from "@/components/commons/badge/customBadge"
 import Link from "next/link"
 import dayjs from "dayjs"
-import DeleteModal from "../modals/DeleteModal"
+import { usePosts } from "@/hooks/usePostsQuery";
+import { useUsers } from "@/hooks/useUserQuery";
+import { CommentType, PostType, TableRowType, UserType } from "@/types";
 
 
 function TableHeader({ tableCols }: { tableCols: Array<string> }) {
@@ -33,38 +34,13 @@ function TableHeader({ tableCols }: { tableCols: Array<string> }) {
     )
 }
 
-function TablePagination() {
-    return (
-        <div className="flex items-center justify-between mt-6">
-            <button className="flex items-center px-5 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 bg-white border rounded-md gap-x-2 hover:bg-gray-100 dark:bg-gray-900 dark:text-gray-200 dark:border-gray-700 dark:hover:bg-gray-800">
-                <FaLongArrowAltLeft />
-                <span>Previous</span>
-            </button>
 
-            <div className="items-center hidden md:flex gap-x-3">
-                <a href="#" className="px-2 py-1 text-sm text-blue-500 rounded-md dark:bg-gray-800 bg-blue-100/60">1</a>
-                <a href="#" className="px-2 py-1 text-sm text-gray-500 rounded-md dark:hover:bg-gray-800 dark:text-gray-300 hover:bg-gray-100">2</a>
-                <a href="#" className="px-2 py-1 text-sm text-gray-500 rounded-md dark:hover:bg-gray-800 dark:text-gray-300 hover:bg-gray-100">3</a>
-                <a href="#" className="px-2 py-1 text-sm text-gray-500 rounded-md dark:hover:bg-gray-800 dark:text-gray-300 hover:bg-gray-100">...</a>
-                <a href="#" className="px-2 py-1 text-sm text-gray-500 rounded-md dark:hover:bg-gray-800 dark:text-gray-300 hover:bg-gray-100">12</a>
-                <a href="#" className="px-2 py-1 text-sm text-gray-500 rounded-md dark:hover:bg-gray-800 dark:text-gray-300 hover:bg-gray-100">13</a>
-                <a href="#" className="px-2 py-1 text-sm text-gray-500 rounded-md dark:hover:bg-gray-800 dark:text-gray-300 hover:bg-gray-100">14</a>
-            </div>
 
-            <button className="flex items-center px-5 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 bg-white border rounded-md gap-x-2 hover:bg-gray-100 dark:bg-gray-900 dark:text-gray-200 dark:border-gray-700 dark:hover:bg-gray-800">
-                <span>Next</span>
-                <FaLongArrowAltRight />
-            </button>
-        </div>
-    )
-}
-
-function TableBody({ tableName, tableRows }: { tableName: string, tableRows: Array<object> }) {
-
+function TableBody({ tableName, tableRows }: { tableName: string, tableRows: Array<PostType> | Array<UserType> | Array<CommentType> }) {
     return (
         <tbody className="bg-white divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-900">
             {
-                tableRows.map((row: Object, index: Number) => {
+                tableRows.map((row: TableRowType , index: number) => {
                     return (
                         <>
                             <tr key={index}>
@@ -77,48 +53,41 @@ function TableBody({ tableName, tableRows }: { tableName: string, tableRows: Arr
                                 {
                                     tableName === 'posts' && (
                                         <>
-                                            <td className="px-4 py-4  whitespace-nowrap">
-
+                                            <td className="px-4 py-4 whitespace-nowrap">
+                                                <img src={row.image} alt="Post Thumbnail" className="object-cover w-10 h-10 rounded-xl" />
                                             </td>
                                             <td className="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
                                                 {dayjs(row.createdAt).format('MMM DD, YYYY')}
                                             </td>
                                             <td className="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 font-semibold whitespace-nowrap">
-                                                {row.author}
+                                                {row.author.name}
                                             </td>
+                                         
                                             <td className="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
                                                 {row.title}
                                             </td>
-                                            <td className="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
+                                            <td className="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-normal">
                                                 {row.content}
                                             </td>
                                         </>
                                     )
                                 }
+                              
 
                                 {tableName === 'users' && (
                                     <>
                                         <td className="px-4 py-4  whitespace-nowrap">
                                             <img className="object-cover w-8 h-8 rounded-2xl" src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80" alt="" />
-
+                                            
                                         </td>
                                         <td className="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
-                                            <h2 className="text-sm font-medium text-gray-800 dark:text-white ">Arthur Melo</h2>
-
+                                            <p className="text-sm font-medium text-gray-800 dark:text-white ">{row.username}</p>
                                         </td>
+                                      
                                         <td className="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
-                                            <div className="flex items-center gap-x-2 pr-4">
-                                                <div>
-                                                    authurmelo_33
-                                                </div>
-                                            </div>
+                                            {row.email}
                                         </td>
-                                        <td className="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
-                                            authurmelo@example.com
-                                        </td>
-                                        <td className="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 ">
-                                            <CustomBadge text="Active" color="green" />
-                                        </td>
+                                       
                                     </>
                                 )}
 
@@ -164,14 +133,59 @@ function TableBody({ tableName, tableRows }: { tableName: string, tableRows: Arr
     )
 }
 
-export default function PageContent({ tableCols, tableName, tableRows }: { tableCols: Array<string>, tableName: string, tableRows: Array<object> }) {
-
+function TablePagination() {
     return (
-        <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700 font-primary">
-            <TableHeader tableCols={tableCols} />
-            <TableBody tableName={tableName} tableRows={tableRows} />
-            <DeleteModal />
-        </table>
-    )
+        <div className="flex items-center justify-between mt-6">
+            <button className="flex items-center px-5 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 bg-white border rounded-md gap-x-2 hover:bg-gray-100 dark:bg-gray-900 dark:text-gray-200 dark:border-gray-700 dark:hover:bg-gray-800">
+                <FaLongArrowAltLeft />
+                <span>Previous</span>
+            </button>
 
+            <div className="items-center hidden md:flex gap-x-3">
+                <a href="#" className="px-2 py-1 text-sm text-blue-500 rounded-md dark:bg-gray-800 bg-blue-100/60">1</a>
+                <a href="#" className="px-2 py-1 text-sm text-gray-500 rounded-md dark:hover:bg-gray-800 dark:text-gray-300 hover:bg-gray-100">2</a>
+                <a href="#" className="px-2 py-1 text-sm text-gray-500 rounded-md dark:hover:bg-gray-800 dark:text-gray-300 hover:bg-gray-100">3</a>
+                <a href="#" className="px-2 py-1 text-sm text-gray-500 rounded-md dark:hover:bg-gray-800 dark:text-gray-300 hover:bg-gray-100">...</a>
+                <a href="#" className="px-2 py-1 text-sm text-gray-500 rounded-md dark:hover:bg-gray-800 dark:text-gray-300 hover:bg-gray-100">12</a>
+                <a href="#" className="px-2 py-1 text-sm text-gray-500 rounded-md dark:hover:bg-gray-800 dark:text-gray-300 hover:bg-gray-100">13</a>
+                <a href="#" className="px-2 py-1 text-sm text-gray-500 rounded-md dark:hover:bg-gray-800 dark:text-gray-300 hover:bg-gray-100">14</a>
+            </div>
+
+            <button className="flex items-center px-5 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 bg-white border rounded-md gap-x-2 hover:bg-gray-100 dark:bg-gray-900 dark:text-gray-200 dark:border-gray-700 dark:hover:bg-gray-800">
+                <span>Next</span>
+                <FaLongArrowAltRight />
+            </button>
+        </div>
+    )
+}
+
+
+export default function PageContent({ tableCols, tableName }: { tableCols: Array<string>, tableName: string }) {
+    if (tableName === 'posts') {
+        const { isLoading, error, data } = usePosts();
+        if (isLoading) return <div>Loading...</div>
+
+        if (error) return <div>Something went wrong...</div>
+
+        return (
+            <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700 font-primary">
+                <TableHeader tableCols={tableCols} />
+                <TableBody tableName={tableName} tableRows={data} />
+            </table>
+        )
+    }
+
+    if (tableName === 'users') {
+        const { isLoading, error, data } = useUsers();
+        if (isLoading) return <div>Loading...</div>
+
+        if (error) return <div>Something went wrong...</div>
+
+        return (
+            <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700 font-primary">
+                <TableHeader tableCols={tableCols} />
+                <TableBody tableName={tableName} tableRows={data} />
+            </table>
+        )
+    }
 }

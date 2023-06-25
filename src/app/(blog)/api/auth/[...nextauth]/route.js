@@ -2,7 +2,7 @@ import NextAuth from 'next-auth/next'
 import { connectToDatabase } from '@/utilities/database'
 import GithubProvider from 'next-auth/providers/github'
 import GoogleProvider from 'next-auth/providers/google'
-
+import jwt from 'jsonwebtoken'
 import User from '@/models/userModel'
 
 
@@ -15,16 +15,24 @@ const handler = NextAuth({
         GoogleProvider({
             clientId: process.env.GOOGLE_ID,
             clientSecret: process.env.GOOGLE_CLIENT_SECRET
-        })
+        }),
+      
     ],
 
-    secret: process.env.NEXTAUTH_SECRET,
+    session:{
+        strategy: 'jwt',
+    },
+
 
     callbacks: {
         async session({ session }) {
             // store the user id from MongoDB to session
             const sessionUser = await User.findOne({ email: session.user.email });
             session.user.id = sessionUser._id.toString();
+
+            // create JWT token
+            const token = jwt.sign({userId: session.user.id}, process.env.NEXTAUTH_SECRET, {expiresIn: '1d'});
+            session.user.access = token;
 
             return session;
         },

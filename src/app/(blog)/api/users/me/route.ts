@@ -1,19 +1,32 @@
 import User from "@/models/userModel";
 import { connectToDatabase } from "@/utilities/database";
+import { NextApiRequest } from "next";
 import { NextResponse } from "next/server";
+import jwt from 'jsonwebtoken'
 
-export async function GET(req: Request) {
+export async function GET(req: NextApiRequest) {
     await connectToDatabase();
-    const { searchParams } = new URL(req.url);
-    const email = searchParams.get('email');
-    const comments = searchParams.get('comment');
+
     try {
-        if (email) {
-            const user = await User.findOne({ email: email }).populate('likedPosts').populate('savedPosts');
-            return NextResponse.json(user, { status: 200 });
+        const { authorization } = req.headers;
+        console.log(req.headers);
+
+      
+        if (!authorization || !authorization.startsWith('Bearer ')) {
+            return NextResponse.json({ message: 'Unauthorized' }, { status: 401 });
         }
 
-    } catch (err: any) {
-        return NextResponse.json(err.message, { status: 500 });
+
+
+        const token = authorization.split(' ')[1];
+        const decoded = jwt.verify(token, process.env.NEXTAUTH_SECRET);
+
+        const user = await User.findById(decoded.userId).populate('likedPosts').populate('savedPosts');
+
+        if (!user) return NextResponse.json({ message: 'User not found.' }, { status: 401 });
+
+        return NextResponse.json({ user }, { status: 200 });
+    } catch (err) {
+        return NextResponse.json({ message: 'Server error!' }, { status: 500 });
     }
 };

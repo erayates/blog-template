@@ -1,0 +1,15 @@
+.view-all{
+    @apply flex justify-end items-center text-sm font-medium text-blue-600 dark:text-blue-400 hover:underline my-5 cursor-pointer
+}
+
+.user-info-item{
+    @apply  items-center text-sm font-normal text-gray-500
+}
+
+.user-avatar{
+    @apply mb-2 w-40 h-40 rounded-2xl shadow-lg shadow-gray-300
+}
+
+.user-info-container{
+    @apply flex lg:block sm:space-x-4 xl:space-x-0 
+}
